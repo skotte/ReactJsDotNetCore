@@ -12,11 +12,11 @@ export class AddStudent extends React.Component<RouteComponentProps<{}>, IAddStu
     super(props);
     this.state = { title: "", loading: true, studentData: new StudentData };
     
-    var studentId = this.props.match.params["studentId"];
+    var studentId = this.props.match.params["studentid"];
     // This will set state for Edit employee  
-    if (studentId > 0) {
+    if (studentId) {
       fetch('api/Student/Details/' + studentId)
-        .then(response => response.json() as Promise<StudentData>)
+        .then(response => response.json() as Promise<StudentData>)  
         .then(data => {
           this.setState({ title: "Edit", loading: false, studentData: data });
         });
@@ -75,27 +75,27 @@ export class AddStudent extends React.Component<RouteComponentProps<{}>, IAddStu
     return (
       <form onSubmit={this.handleSave} >
         <div className="form-group row" >
-          <input type="hidden" name="employeeId" value={this.state.studentData.studentId} />
+          <input type="hidden" name="studentId" value={this.state.studentData.studentId} />
         </div>
         <div className="form-group row" >
-          <label className=" control-label col-md-12" htmlFor="Name">First Name</label>
+          <label className=" control-label col-md-12" htmlFor="firstName">First Name</label>
           <div className="col-md-4">
-            <input className="form-control" type="text" name="name" defaultValue={this.state.studentData.firstName} required />
+            <input className="form-control" type="text" name="firstName" defaultValue={this.state.studentData.firstName} required />
           </div>
         </div >
         <div className="form-group row" >
-          <label className=" control-label col-md-12" htmlFor="Name">Last Name</label>
+          <label className=" control-label col-md-12" htmlFor="lastName">Last Name</label>
           <div className="col-md-4">
-            <input className="form-control" type="text" name="name" defaultValue={this.state.studentData.lastName} required />
+            <input className="form-control" type="text" name="lastName" defaultValue={this.state.studentData.lastName} required />
           </div>
         </div >
         <div className="form-group row">
-          <label className="control-label col-md-12" htmlFor="Gender">Gender</label>
+          <label className="control-label col-md-12" htmlFor="gendertype">Gender</label>
           <div className="col-md-4">
-            <select className="form-control" data-val="true" name="gender" defaultValue={this.state.studentData.gender} required>
+            <select className="form-control" data-val="true" name="gendertype" defaultValue={this.state.studentData.genderType} required>
               <option value="">-- Select Gender --</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
             </select>
           </div>
         </div >
@@ -106,4 +106,4 @@ export class AddStudent extends React.Component<RouteComponentProps<{}>, IAddStu
       </form >
     );
   }
-}
+} 

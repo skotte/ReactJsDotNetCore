@@ -22,8 +22,8 @@ namespace ReactJsDotNetCore.Controllers
     }
 
     // GET: api/Student/5
-    [HttpGet("{id}", Name = "Get")]
-    [Route("/Details/{id}")]
+    [HttpGet]
+    [Route("Details/{id}")]
     public Student Get(Guid id)
     {
       return StudentService.GetById(id);
@@ -31,23 +31,23 @@ namespace ReactJsDotNetCore.Controllers
 
     // POST: api/Student
     [HttpPost]
-    [Route("/Create")]
-    public void Post([FromBody] Student value)
+    [Route("Create")]
+    public void Post(Student value)
     {
       StudentService.Add(value);
     }
 
     // PUT: api/Student/5
-    [HttpPut("{id}")]
-    [Route("/Edit")]
-    public void Put(int id, [FromBody] Student value)
+    [HttpPut]
+    [Route("Edit")]
+    public void Put(Student value)
     {
       StudentService.Update(value);
     }
 
     // DELETE: api/ApiWithActions/5
-    [HttpDelete("{id}")]
-    [Route("/Delete")]
+    [HttpDelete]
+    [Route("Delete/{id}")]
     public void Delete(Guid id)
     {
       StudentService.Delete(id);

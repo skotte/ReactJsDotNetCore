@@ -42,7 +42,7 @@ export class FetchStudent extends React.Component<RouteComponentProps<{}>, IFetc
         this.setState(
           {
             studentList: this.state.studentList.filter((rec) => {
-              return (rec.studentId != id);
+              return (rec.studentId !== id);
             })
           });
       });
@@ -57,10 +57,8 @@ export class FetchStudent extends React.Component<RouteComponentProps<{}>, IFetc
       <thead>
         <tr>
           <th></th>
-          <th>StudentId</th>
           <th>Name</th>
           <th>Gender</th>
-          <th>Department</th>
           <th>City</th>
         </tr>
       </thead>
@@ -68,9 +66,8 @@ export class FetchStudent extends React.Component<RouteComponentProps<{}>, IFetc
         {studentList.map(emp =>
           <tr key={emp.studentId}>
             <td></td>
-            <td>{emp.studentId}</td>
             <td>{emp.firstName} {emp.lastName}</td>
-            <td>{emp.gender}</td>
+            <td>{emp.genderType === "M" ? "Male" : emp.genderType === "F" ? "Female" : ""}</td>
             <td>
               <a className="action" onClick={(id) => this.handleEdit(emp.studentId)}>Edit</a> |
               <a className="action" onClick={(id) => this.handleDelete(emp.studentId)}>Delete</a>
@@ -86,5 +83,5 @@ export class StudentData {
   studentId: number = 0;
   firstName: string = "";
   lastName: string = "";
-  gender: string = "";
+  genderType: string = "";
 }
