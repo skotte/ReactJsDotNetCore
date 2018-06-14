@@ -35,7 +35,7 @@ export class AddStudent extends React.Component<RouteComponentProps<{}>, IAddStu
       : this.renderCreateForm();
     return <div>
       <h1>{this.state.title}</h1>
-      <h3>Employee</h3>
+      <h3>Student</h3>
       <hr />
       {contents}
     </div>;
