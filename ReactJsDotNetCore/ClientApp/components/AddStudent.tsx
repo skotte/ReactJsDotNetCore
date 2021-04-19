@@ -7,6 +7,7 @@ interface IAddStudentDataState {
   loading: boolean;
   studentData: StudentData;
 }
+
 export class AddStudent extends React.Component<RouteComponentProps<{}>, IAddStudentDataState> {
   constructor(props) {
     super(props);
